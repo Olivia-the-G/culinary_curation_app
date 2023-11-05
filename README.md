@@ -1,5 +1,10 @@
 # Culinary Curation App
 
+## API Links
+
+* Recipe API: https://developer.edamam.com/edamam-docs-recipe-api
+* Nutrition API: https://developer.edamam.com/edamam-docs-nutrition-api 
+
 ## Timeline
 
 * November 8 Wed: Official Project Kick-Off
