@@ -1,0 +1,66 @@
+header{
+    text-align: center;
+    padding: 30px;
+    letter-spacing: 30px;
+    box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.268);
+}
+
+body{
+    background-color: rgb(0, 149, 149);
+}
+
+img{
+    max-width: 100px;
+    max-height: 100px;
+    margin: 10px;
+
+}
+
+.startPage,
+.ingredientPage,
+.recipePage
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.177);
+    text-align: center;
+}
+
+.button{
+    background-color: rgb(125, 125, 125);
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 5px;
+    border-style: none;
+    margin: 5px;
+    font-weight: 500;
+    box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+
+}
+
+.button:hover{
+    background-color: rgb(100, 100, 100);
+    color: white;
+    transition: .2s;
+    box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+}
+
+.button:active{
+    box-shadow:inset 0 0.6em 2em -0.3em rgba(0,0,0,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+}
+
+.inactive {
+    display: none;
+}
+
+.ingredientField{
+    padding: 5px;
+}
