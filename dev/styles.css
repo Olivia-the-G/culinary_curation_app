@@ -1,19 +1,26 @@
+
+
 header{
+    width: 100%;
     text-align: center;
     padding: 30px;
     letter-spacing: 30px;
-    box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.268);
+    box-shadow: 0px 0px 20px 20px #00000044;
+    justify-content: center;
 }
 
 body{
-    background-color: rgb(0, 149, 149);
+    background-color: #9bc07f;
 }
 
 img{
     max-width: 100px;
     max-height: 100px;
     margin: 10px;
+}
 
+h1 {
+    color: #311E10;
 }
 
 .startPage,
@@ -35,7 +42,7 @@ img{
 }
 
 .button{
-    background-color: rgb(125, 125, 125);
+    background-color: #FEA82F;
     color: rgb(255, 255, 255);
     border-radius: 5px;
     padding: 5px;
@@ -63,4 +70,12 @@ img{
 
 .ingredientField{
     padding: 5px;
+}
+
+@media screen and (max-device-width: 768px), screen and (max-width: 414px) {
+    .startPage,
+    .ingredientPage,
+    .recipePage  {
+   width: 80%;
+}
 }
