@@ -50,7 +50,14 @@ $("#ingredientBtn").on("click", function () {
   $.ajax({
     url: recipeApi,
     success: function (result) {
-      console.log(result);
+      var imageSection = $("#recipe-image-section");
+      //   var recipeNameSection = $("#recipeName");
+      var recipeImg = $("<img>");
+      //   var recipeName = $("<h3>");
+      recipeImg.attr("src", result[0].image);
+      //   recipeName.text(result[0].title);
+      imageSection.append(recipeImg);
+      //   recipeNameSection.append(recipeName);
     },
   });
 });
