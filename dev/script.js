@@ -42,11 +42,23 @@ $("#ingredientBtn").on("click", function () {
   var ingredientItem1 = $("#ingri1").val();
   var ingredientItem2 = $("#ingri2").val();
   var ingredientItem3 = $("#ingri3").val();
-  var recipeApi = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientItem1},${ingredientItem2},${ingredientItem3}&apiKey=f2ff7323d7874b7aa2f8de38094d02e7`;
+
+  let ingredientItem1LC = ingredientItem1.toLowerCase();
+  let ingredientItem2LC = ingredientItem2.toLowerCase();
+  let ingredientItem3LC = ingredientItem3.toLowerCase();
+
+  var recipeApi = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientItem1LC},${ingredientItem2LC},${ingredientItem3LC}&apiKey=f2ff7323d7874b7aa2f8de38094d02e7`;
   $.ajax({
     url: recipeApi,
     success: function (result) {
-      console.log(result);
+      var imageSection = $("#recipe-image-section");
+      //   var recipeNameSection = $("#recipeName");
+      var recipeImg = $("<img>");
+      //   var recipeName = $("<h3>");
+      recipeImg.attr("src", result[0].image);
+      //   recipeName.text(result[0].title);
+      imageSection.append(recipeImg);
+      //   recipeNameSection.append(recipeName);
     },
   });
 });
