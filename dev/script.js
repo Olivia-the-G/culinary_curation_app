@@ -30,11 +30,15 @@ ingredientBtn.addEventListener("click", function () {
   hide(ingredientPage);
   show(recipePage);
 });
-
+// 
 restartBtn.addEventListener("click", function () {
   hide(ingredientPage);
   hide(recipePage);
   show(startPage);
+  document.getElementById("startPageTitle").innerText = "Miss me Raaba? Let's see what else is in your fridge!";
+  document.getElementById("ingri1").value = ""
+  document.getElementById("ingri2").value = ""
+  document.getElementById("ingri3").value = ""
 });
 
 $("#ingredientBtn").on("click", function () {
