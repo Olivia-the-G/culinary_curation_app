@@ -35,6 +35,7 @@ restartBtn.addEventListener("click", function () {
   hide(ingredientPage);
   hide(recipePage);
   show(startPage);
+  document.getElementById("startPageTitle").innerText = "Miss me already? Let's see what else is in your fridge!";
 });
 
 $("#ingredientBtn").on("click", function () {
