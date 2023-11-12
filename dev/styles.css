@@ -49,6 +49,10 @@ h2{
     text-align: center;
 }
 
+#errorHandler {
+    color: red;
+}
+
 .button{
     background-color: #FEA82F;
     color: rgb(255, 255, 255);
@@ -77,6 +81,7 @@ h2{
     display: none;
 }
 
+
 .ingredientList{
     display: flex;
     flex-direction: column;
@@ -97,3 +102,4 @@ h2{
 }
 
 }
+

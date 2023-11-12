@@ -26,21 +26,17 @@ startBtn.addEventListener("click", function () {
   show(ingredientPage);
 });
 
-ingredientBtn.addEventListener("click", function () {
-  hide(ingredientPage);
-  show(recipePage);
-});
-// 
+//
 restartBtn.addEventListener("click", function () {
   hide(ingredientPage);
   hide(recipePage);
   show(startPage);
-  document.getElementById("startPageTitle").innerText = "Miss me already? Let's see what else is in your fridge!";
-  document.getElementById("ingri1").value = ""
-  document.getElementById("ingri2").value = ""
-  document.getElementById("ingri3").value = ""
-
-
+  document.getElementById("startPageTitle").innerText =
+    "Miss me already? Let's see what else is in your fridge!";
+  document.getElementById("ingri1").value = "";
+  document.getElementById("ingri2").value = "";
+  document.getElementById("ingri3").value = "";
+  $("#errorHandler")[0].innerText = "";
 });
 
 $("#ingredientBtn").on("click", function () {
@@ -55,15 +51,19 @@ $("#ingredientBtn").on("click", function () {
   var recipeApi = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientItem1LC},${ingredientItem2LC},${ingredientItem3LC}&apiKey=f2ff7323d7874b7aa2f8de38094d02e7`;
   $.ajax({
     url: recipeApi,
+    dataType: "json",
     success: function (result) {
-      var imageSection = $("#recipe-image-section");
-      //   var recipeNameSection = $("#recipeName");
-      var recipeImg = $("<img>");
-      //   var recipeName = $("<h3>");
-      recipeImg.attr("src", result[0].image);
-      //   recipeName.text(result[0].title);
-      imageSection.append(recipeImg);
-      //   recipeNameSection.append(recipeName);
+      if (result == false) {
+        console.log($("#errorHandler"))
+        $("#errorHandler")[0].innerText =
+          "Please enter at least 1 VALID ingredient";
+        return;
+      } else {
+        hide(ingredientPage);
+        show(recipePage);
+        $("#recipeImage").attr("src", result[0].image);
+      }
     },
   });
 });
+
