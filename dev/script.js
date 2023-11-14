@@ -68,23 +68,21 @@ $("#ingredientBtn").on("click", function () {
         hide(ingredientPage);
         show(recipePage);
         $("#recipeImage").attr("src", result[0].image);
+        $("#recipeImage").attr("alt", `Recipe image for ${result[0].title}`);
         $("#recipeName").text(result[0].title);
+        $("#nutritionLabel").attr("src", `https://api.spoonacular.com/recipes/${result[0].id}/nutritionLabel.png?apiKey=f2ff7323d7874b7aa2f8de38094d02e7`);
+        $("#nutritionLabel").attr("alt", `Nutrition label for ${result[0].title} recipe`);
+        $.ajax({
+          url: `https://api.spoonacular.com/recipes/${result[0].id}/information?includeNutrition=false&apiKey=f2ff7323d7874b7aa2f8de38094d02e7`,
+          dataType: "json",
+          success: function () {
+            // for recipe link button
+            console.log(result[0]);
+          }
+        });
         console.log(result);
         displayNextRecipe();
       }
-
-      $("#recipeImage").attr("alt", `Recipe image for ${result[0].title}`);
-      $("#recipeName").text(result[0].title);
-      $("#nutritionLabel").attr("src", `https://api.spoonacular.com/recipes/${result[0].id}/nutritionLabel.png?apiKey=f2ff7323d7874b7aa2f8de38094d02e7`);
-      $("#nutritionLabel").attr("alt", `Nutrition label for ${result[0].title} recipe`);
-      $.ajax({
-        url: `https://api.spoonacular.com/recipes/${result[0].id}/information?includeNutrition=false&apiKey=f2ff7323d7874b7aa2f8de38094d02e7`,
-        dataType: "json",
-        success: function () {
-          // for recipe link button
-          console.log(result[0]);
-        }
-      })
     }
   },
   );
@@ -94,6 +92,10 @@ $("#ingredientBtn").on("click", function () {
     $("#regenerateBtn").on("click", function () {
       if (currentRecipeIndex < result.length) {
         $("#recipeImage").attr("src", result[currentRecipeIndex].image);
+        $("#recipeImage").attr("alt", `Recipe image for ${result[currentRecipeIndex].title}`);
+        $("#recipeName").text(result[currentRecipeIndex].title);
+        $("#nutritionLabel").attr("src", `https://api.spoonacular.com/recipes/${result[currentRecipeIndex].id}/nutritionLabel.png?apiKey=f2ff7323d7874b7aa2f8de38094d02e7`);
+        $("#nutritionLabel").attr("alt", `Nutrition label for ${result[currentRecipeIndex].title} recipe`);
         console.log(currentRecipeIndex);
         currentRecipeIndex++;
       } else {
