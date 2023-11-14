@@ -15,11 +15,11 @@ Have you ever found yourself staring at chaos in your fridge unable to think of 
 
 ## Timeline
 
-* November 8 Wed: Official Project Kick-Off
-* November 15 Wed: MVP
-* November 18 Sat: Complete the package app & Presentation Deck
-* November 19 Sun: Mock Presentation
-* November 20 Mon: Project Due
+- November 8 Wed: Official Project Kick-Off
+- November 15 Wed: MVP
+- November 18 Sat: Complete the package app & Presentation Deck
+- November 19 Sun: Mock Presentation
+- November 20 Mon: Project Due
 
 ## Usage
 
@@ -27,19 +27,19 @@ This section is still to be written
 
 ## Credits
 
-### Collaborators <img src="{https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"}/>
+### Collaborators
 
-Nicole Hong ~ https://github.com/Nicole-Hong
-Brian Cheung ~ https://github.com/CYCBrian
-Andre ~ https://github.com/ae-andre
-Yi Ting (Jasmine) Lee ~ https://github.com/Jasmineleeyt
-Raaba Ahmad ~ https://github.com/raaba241
-Olivia Gowan ~ https://github.com/Olivia-the-G
+- Nicole Hong ~ https://github.com/Nicole-Hong
+- Brian Cheung ~ https://github.com/CYCBrian
+- André Endique ~ https://github.com/ae-andre
+- Yi Ting (Jasmine) Lee ~ https://github.com/Jasmineleeyt
+- Raaba Ahmad ~ https://github.com/raaba241
+- Olivia Gowan ~ https://github.com/Olivia-the-G
 
 ### API Links
 
-* Recipe API: https://developer.edamam.com/edamam-docs-recipe-api
-* Nutrition API: https://developer.edamam.com/edamam-docs-nutrition-api 
+- Recipe API: https://developer.edamam.com/edamam-docs-recipe-api
+- Nutrition API: https://developer.edamam.com/edamam-docs-nutrition-api 
 
 ## Features
 
