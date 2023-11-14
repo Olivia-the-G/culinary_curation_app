@@ -35,7 +35,8 @@ restartBtn.addEventListener("click", function () {
   hide(ingredientPage);
   hide(recipePage);
   show(startPage);
-  document.getElementById("startPageTitle").innerText = "Miss me already? Let's see what else is in your fridge!";
+  document.getElementById("startPageTitle").innerText =
+    "Miss me already? Let's see what else is in your fridge!";
 });
 
 $("#ingredientBtn").on("click", function () {
@@ -52,13 +53,14 @@ $("#ingredientBtn").on("click", function () {
     url: recipeApi,
     success: function (result) {
       var imageSection = $("#recipe-image-section");
-      //   var recipeNameSection = $("#recipeName");
+      var recipeNameSection = $("#recipeName");
       var recipeImg = $("<img>");
-      //   var recipeName = $("<h3>");
+      var recipeName = $("<h4>");
       recipeImg.attr("src", result[0].image);
-      //   recipeName.text(result[0].title);
+      recipeName.text(result[0].title);
       imageSection.append(recipeImg);
-      //   recipeNameSection.append(recipeName);
+      recipeNameSection.append(recipeName);
+      // console.log(result[0].title);
     },
   });
 });
