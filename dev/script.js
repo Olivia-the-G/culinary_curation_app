@@ -54,7 +54,7 @@ $("#ingredientBtn").on("click", function () {
     dataType: "json",
     success: function (result) {
       if (result == false) {
-        console.log($("#errorHandler"))
+        console.log($("#errorHandler"));
         $("#errorHandler")[0].innerText =
           "Please enter at least 1 VALID ingredient";
         return;
@@ -62,8 +62,8 @@ $("#ingredientBtn").on("click", function () {
         hide(ingredientPage);
         show(recipePage);
         $("#recipeImage").attr("src", result[0].image);
+        $("#recipeName").text(result[0].title);
       }
     },
   });
 });
-
