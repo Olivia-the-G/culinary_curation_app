@@ -32,6 +32,7 @@ startBtn.addEventListener("click", function () {
 restartBtn.addEventListener("click", function () {
     // tried to reset the results array but it doesn't seem to work
   result = [];
+  currentRecipeIndex = 0;
   hide(ingredientPage);
   hide(recipePage);
   show(startPage);
@@ -40,7 +41,7 @@ restartBtn.addEventListener("click", function () {
   document.getElementById("ingri1").value = "";
   document.getElementById("ingri2").value = "";
   document.getElementById("ingri3").value = "";
-  $("#errorHandler")[0].innerText = "";
+  $("#errorHandler")[0].innerText = ""; 
 });
 
 $("#ingredientBtn").on("click", function () {
@@ -74,17 +75,17 @@ $("#ingredientBtn").on("click", function () {
   });
 // currently only works for the first set of ingredients, does not work for if i restart the whole process
 function displayNextRecipe() {
-  if (currentRecipeIndex < result.length) {
-    $("#recipeImage").attr("src", result[currentRecipeIndex].image);
-    currentRecipeIndex++;
-  } else {
-    console.log($("#recipeErrorHandler"));
-    $("#recipeErrorHandler")[0].innerText = "No more recipes available.";
-  }
-}
+  $("#regenerateBtn").on("click", function () {
+    if (currentRecipeIndex < result.length) {
+      $("#recipeImage").attr("src", result[currentRecipeIndex].image);
+      console.log(currentRecipeIndex);
+      currentRecipeIndex++;
+    } else {
+      console.log($("#recipeErrorHandler"));
+      $("#recipeErrorHandler")[0].innerText = "No more recipes available.";
+      currentRecipeIndex = 0;
+    };
+  });
+  }});
 
-$("#regenerateBtn").on("click", function () {
-  displayNextRecipe();
-});
-});
-
+// if startbtn is click, return the function
