@@ -68,6 +68,7 @@ $("#ingredientBtn").on("click", function () {
         hide(ingredientPage);
         show(recipePage);
         $("#recipeImage").attr("src", result[0].image);
+        $("#recipeName").text(result[0].title);
         console.log(result);
         displayNextRecipe();
       }
@@ -87,5 +88,3 @@ function displayNextRecipe() {
     };
   });
   }});
-
-// if startbtn is click, return the function
