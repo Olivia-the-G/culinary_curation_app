@@ -30,7 +30,7 @@ startBtn.addEventListener("click", function () {
 });
 
 restartBtn.addEventListener("click", function () {
-    // tried to reset the results array but it doesn't seem to work
+  // tried to reset the results array but it doesn't seem to work
   result = [];
   currentRecipeIndex = 0;
   hide(ingredientPage);
@@ -41,7 +41,7 @@ restartBtn.addEventListener("click", function () {
   document.getElementById("ingri1").value = "";
   document.getElementById("ingri2").value = "";
   document.getElementById("ingri3").value = "";
-  $("#errorHandler")[0].innerText = ""; 
+  $("#errorHandler")[0].innerText = "";
 });
 
 $("#ingredientBtn").on("click", function () {
@@ -73,32 +73,34 @@ $("#ingredientBtn").on("click", function () {
         displayNextRecipe();
       }
 
-        $("#recipeImage").attr("alt", `Recipe image for ${result[0].title}`);
-        $("#recipeName").text(result[0].title);
-        $("#nutritionLabel").attr("src", `https://api.spoonacular.com/recipes/${result[0].id}/nutritionLabel.png?apiKey=f2ff7323d7874b7aa2f8de38094d02e7`);
-        $("#nutritionLabel").attr("alt", `Nutrition label for ${result[0].title} recipe`);
-        $.ajax({
-          url: `https://api.spoonacular.com/recipes/${result[0].id}/information?includeNutrition=false&apiKey=f2ff7323d7874b7aa2f8de38094d02e7`,
-          dataType: "json",
-          success: function () {
-            // for recipe link button
-            console.log(result[0]);
-          }
-        })
-    }},
+      $("#recipeImage").attr("alt", `Recipe image for ${result[0].title}`);
+      $("#recipeName").text(result[0].title);
+      $("#nutritionLabel").attr("src", `https://api.spoonacular.com/recipes/${result[0].id}/nutritionLabel.png?apiKey=f2ff7323d7874b7aa2f8de38094d02e7`);
+      $("#nutritionLabel").attr("alt", `Nutrition label for ${result[0].title} recipe`);
+      $.ajax({
+        url: `https://api.spoonacular.com/recipes/${result[0].id}/information?includeNutrition=false&apiKey=f2ff7323d7874b7aa2f8de38094d02e7`,
+        dataType: "json",
+        success: function () {
+          // for recipe link button
+          console.log(result[0]);
+        }
+      })
+    }
+  },
   );
   
-// currently only works for the first set of ingredients, does not work for if i restart the whole process
-function displayNextRecipe() {
-  $("#regenerateBtn").on("click", function () {
-    if (currentRecipeIndex < result.length) {
-      $("#recipeImage").attr("src", result[currentRecipeIndex].image);
-      console.log(currentRecipeIndex);
-      currentRecipeIndex++;
-    } else {
-      console.log($("#recipeErrorHandler"));
-      $("#recipeErrorHandler")[0].innerText = "No more recipes available.";
-      currentRecipeIndex = 0;
-    };
-  });
-  }});
+  // currently only works for the first set of ingredients, does not work for if i restart the whole process
+  function displayNextRecipe() {
+    $("#regenerateBtn").on("click", function () {
+      if (currentRecipeIndex < result.length) {
+        $("#recipeImage").attr("src", result[currentRecipeIndex].image);
+        console.log(currentRecipeIndex);
+        currentRecipeIndex++;
+      } else {
+        console.log($("#recipeErrorHandler"));
+        $("#recipeErrorHandler")[0].innerText = "No more recipes available.";
+        currentRecipeIndex = 0;
+      };
+    });
+  }
+});
