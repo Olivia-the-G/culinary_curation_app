@@ -13,7 +13,7 @@ header{
 }
 
 body{
-    background-color: #9bc07f;
+    background-color: #E4EEC7;
 }
 
 img{
@@ -23,7 +23,7 @@ img{
 }
 
 h1 {
-    color: #311E10;
+    color: #78502b;
 }
 
 h2{
@@ -54,7 +54,7 @@ h2{
 }
 
 .button{
-    background-color: #FEA82F;
+    background-color: #ce8929;
     color: rgb(255, 255, 255);
     border-radius: 5px;
     padding: 12px;
