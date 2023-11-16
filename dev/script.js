@@ -70,53 +70,71 @@ $("#ingredientBtn").on("click", function () {
         $("#recipeImage").attr("src", result[0].image);
         $("#recipeImage").attr("alt", `Recipe image for ${result[0].title}`);
         $("#recipeName").text(result[0].title);
-        $("#nutritionLabel").attr("src", `https://api.spoonacular.com/recipes/${result[0].id}/nutritionLabel.png?apiKey=f2ff7323d7874b7aa2f8de38094d02e7`);
-        $("#nutritionLabel").attr("alt", `Nutrition label for ${result[0].title} recipe`);
-        $.ajax({
-          url: `https://api.spoonacular.com/recipes/${result[0].id}/information?includeNutrition=false&apiKey=f2ff7323d7874b7aa2f8de38094d02e7`,
-          dataType: "json",
-          success: function () {
-            // for recipe link button
-            console.log(result[0]);
-          } 
-        });
-        //Getting cooking videos based on the recipe title returned by the Spoonacular api and embed/display on the page 
-        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=${result[0].title}-receipe&key=AIzaSyCPQrlqDUzWQXG8L_DzMhfZ64M-WBvCY2Q`)
-        .then (function (result){
-          return result.json()
-        }).then(function (data){
-          console.log(data)
-          var videoList = data.items;
-          for(var i = 0; i < 4; i++){
-            var embeddedVideo = `<iframe id="video-player" type="text/html" src="https://www.youtube.com/embed/${videoList[i].id.videoId}" frameborder="0"></iframe>`
-            $(".videos").append(`<div class="recipe-video">${videoList[i].snippet.title} ${embeddedVideo}</div>`)
-
-            console.log(videoList[i].snippet.title, videoList[i].id.videoId)
-          };
-        }); 
+        $("#nutritionLabel").attr(
+          "src",
+          `https://api.spoonacular.com/recipes/${result[0].id}/nutritionLabel.png?apiKey=f2ff7323d7874b7aa2f8de38094d02e7`
+        );
+        $("#nutritionLabel").attr(
+          "alt",
+          `Nutrition label for ${result[0].title} recipe`
+        );
+        $("#recipeBtnLink").attr(
+          "href",
+          `https://spoonacular.com/${result[0].title}`
+        );
+        // Get Youtube video titles & video ids using YouTube api based on the recipe title returned by the Spoonacular api. Still require work to replace the video titles and ids when getting a different recipe.
+        fetch(
+          `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=${result[0].title}-receipe&key=AIzaSyCPQrlqDUzWQXG8L_DzMhfZ64M-WBvCY2Q`
+        )
+          .then(function (result) {
+            return result.json();
+          })
+          .then(function (data) {
+            console.log(data);
+            var videoList = data.items;
+            for (var i = 0; i < 4; i++) {
+              $(".videos").append(
+                `<div class="recipe-video">${
+                  videoList[i].snippet.title +
+                  " " +
+                  " " +
+                  videoList[i].id.videoId
+                }</div>`
+              );
+              console.log(videoList[i].snippet.title, videoList[i].id.videoId);
+            }
+          });
         console.log(result);
         displayNextRecipe();
       }
-    }
-  },
-  );
-  
+    },
+  });
+
   // currently only works for the first set of ingredients, does not work for if i restart the whole process
   function displayNextRecipe() {
     $("#regenerateBtn").on("click", function () {
       if (currentRecipeIndex < result.length) {
         $("#recipeImage").attr("src", result[currentRecipeIndex].image);
-        $("#recipeImage").attr("alt", `Recipe image for ${result[currentRecipeIndex].title}`);
+        $("#recipeImage").attr(
+          "alt",
+          `Recipe image for ${result[currentRecipeIndex].title}`
+        );
         $("#recipeName").text(result[currentRecipeIndex].title);
-        $("#nutritionLabel").attr("src", `https://api.spoonacular.com/recipes/${result[currentRecipeIndex].id}/nutritionLabel.png?apiKey=f2ff7323d7874b7aa2f8de38094d02e7`);
-        $("#nutritionLabel").attr("alt", `Nutrition label for ${result[currentRecipeIndex].title} recipe`);
+        $("#nutritionLabel").attr(
+          "src",
+          `https://api.spoonacular.com/recipes/${result[currentRecipeIndex].id}/nutritionLabel.png?apiKey=f2ff7323d7874b7aa2f8de38094d02e7`
+        );
+        $("#nutritionLabel").attr(
+          "alt",
+          `Nutrition label for ${result[currentRecipeIndex].title} recipe`
+        );
         console.log(currentRecipeIndex);
         currentRecipeIndex++;
       } else {
         console.log($("#recipeErrorHandler"));
         $("#recipeErrorHandler")[0].innerText = "No more recipes available.";
         currentRecipeIndex = 0;
-      };
+      }
     });
   }
 });
