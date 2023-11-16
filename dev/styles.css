@@ -48,6 +48,11 @@ h2 {
     text-align: center;
 }
 
+.recipePage {
+    width: 85%;
+
+}
+
 #errorHandler {
     color: red;
 }
@@ -106,4 +111,17 @@ screen and (max-width: 414px) {
         width: 80%;
     }
 
+}
+
+.videos {
+    display:flex;
+}
+
+.recipe-video {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    font-size: 70%;
 }
