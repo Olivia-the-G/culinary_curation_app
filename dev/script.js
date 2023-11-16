@@ -51,7 +51,7 @@ $("#ingredientBtn").on("click", function () {
   let ingredientItem1LC = ingredientItem1.toLowerCase();
   let ingredientItem2LC = ingredientItem2.toLowerCase();
   let ingredientItem3LC = ingredientItem3.toLowerCase();
-  var recipeApi = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientItem1LC},${ingredientItem2LC},${ingredientItem3LC}&apiKey=d4fc8b0b2ddf4d65864d92dabf969944`;
+  var recipeApi = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientItem1LC},${ingredientItem2LC},${ingredientItem3LC}&apiKey=7a5414c1ec984a2bb38149115cb49f5f`;
   // tried to reset the results array but it doesn't seem to work
   result = [];
   $.ajax({
@@ -72,7 +72,7 @@ $("#ingredientBtn").on("click", function () {
         $("#recipeName").text(result[0].title);
         $("#nutritionLabel").attr(
           "src",
-          `https://api.spoonacular.com/recipes/${result[0].id}/nutritionLabel.png?apiKey=d4fc8b0b2ddf4d65864d92dabf969944`
+          `https://api.spoonacular.com/recipes/${result[0].id}/nutritionLabel.png?apiKey=7a5414c1ec984a2bb38149115cb49f5f`
         );
         $("#nutritionLabel").attr(
           "alt",
@@ -83,26 +83,19 @@ $("#ingredientBtn").on("click", function () {
           `https://spoonacular.com/${result[0].title}`
         );
         // Get Youtube video titles & video ids using YouTube api based on the recipe title returned by the Spoonacular api. Still require work to replace the video titles and ids when getting a different recipe.
-        fetch(
-          `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=${result[0].title}-receipe&key=AIzaSyCPQrlqDUzWQXG8L_DzMhfZ64M-WBvCY2Q`
-        )
-          .then(function (result) {
-            return result.json();
-          })
-          .then(function (data) {
-            // console.log(data);
-            var videoList = data.items;
-            for (var i = 0; i < 4; i++) {
-              $(".videos").append(
-                `<div class="recipe-video">${
-                  videoList[i].snippet.title +
-                  " " +
-                  " " +
-                  videoList[i].id.videoId
-                }</div>`
-              );
-              // console.log(videoList[i].snippet.title, videoList[i].id.videoId);
-            }
+        //Getting cooking videos based on the recipe title returned by the Spoonacular api and embed/display on the page 
+        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=${result[0].title}-receipe&key=AIzaSyCPQrlqDUzWQXG8L_DzMhfZ64M-WBvCY2Q`)
+        .then (function (result){
+          return result.json()
+        }).then(function (data){
+          console.log(data)
+          var videoList = data.items;
+          for(var i = 0; i < 4; i++){
+            var embeddedVideo = `<iframe id="video-player" type="text/html" width="60" height="30" src="https://www.youtube.com/embed/${videoList[i].id.videoId}" frameborder="0"></iframe>`
+            $(".videos").append(`<div class="recipe-video">${videoList[i].snippet.title} ${embeddedVideo}</div>`)
+
+            console.log(videoList[i].snippet.title, videoList[i].id.videoId)
+          };
           });
         // console.log(result);
         displayNextRecipe();
