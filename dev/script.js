@@ -51,7 +51,7 @@ $("#ingredientBtn").on("click", function () {
   let ingredientItem1LC = ingredientItem1.toLowerCase();
   let ingredientItem2LC = ingredientItem2.toLowerCase();
   let ingredientItem3LC = ingredientItem3.toLowerCase();
-  var recipeApi = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientItem1LC},${ingredientItem2LC},${ingredientItem3LC}&apiKey=f2ff7323d7874b7aa2f8de38094d02e7`;
+  var recipeApi = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientItem1LC},${ingredientItem2LC},${ingredientItem3LC}&apiKey=d4fc8b0b2ddf4d65864d92dabf969944`;
   // tried to reset the results array but it doesn't seem to work
   result = [];
   $.ajax({
@@ -72,7 +72,7 @@ $("#ingredientBtn").on("click", function () {
         $("#recipeName").text(result[0].title);
         $("#nutritionLabel").attr(
           "src",
-          `https://api.spoonacular.com/recipes/${result[0].id}/nutritionLabel.png?apiKey=f2ff7323d7874b7aa2f8de38094d02e7`
+          `https://api.spoonacular.com/recipes/${result[0].id}/nutritionLabel.png?apiKey=d4fc8b0b2ddf4d65864d92dabf969944`
         );
         $("#nutritionLabel").attr(
           "alt",
@@ -90,7 +90,7 @@ $("#ingredientBtn").on("click", function () {
             return result.json();
           })
           .then(function (data) {
-            console.log(data);
+            // console.log(data);
             var videoList = data.items;
             for (var i = 0; i < 4; i++) {
               $(".videos").append(
@@ -101,10 +101,10 @@ $("#ingredientBtn").on("click", function () {
                   videoList[i].id.videoId
                 }</div>`
               );
-              console.log(videoList[i].snippet.title, videoList[i].id.videoId);
+              // console.log(videoList[i].snippet.title, videoList[i].id.videoId);
             }
           });
-        console.log(result);
+        // console.log(result);
         displayNextRecipe();
       }
     },
@@ -122,19 +122,41 @@ $("#ingredientBtn").on("click", function () {
         $("#recipeName").text(result[currentRecipeIndex].title);
         $("#nutritionLabel").attr(
           "src",
-          `https://api.spoonacular.com/recipes/${result[currentRecipeIndex].id}/nutritionLabel.png?apiKey=f2ff7323d7874b7aa2f8de38094d02e7`
+          `https://api.spoonacular.com/recipes/${result[currentRecipeIndex].id}/nutritionLabel.png?apiKey=d4fc8b0b2ddf4d65864d92dabf969944`
         );
         $("#nutritionLabel").attr(
           "alt",
           `Nutrition label for ${result[currentRecipeIndex].title} recipe`
         );
-        console.log(currentRecipeIndex);
+        // console.log(currentRecipeIndex);
         currentRecipeIndex++;
       } else {
-        console.log($("#recipeErrorHandler"));
+        // console.log($("#recipeErrorHandler"));
         $("#recipeErrorHandler")[0].innerText = "No more recipes available.";
         currentRecipeIndex = 0;
       }
     });
   }
 });
+
+var requestOptions = {
+  method: "GET",
+};
+
+fetch(
+  "https://api.geoapify.com/v1/ipinfo?&apiKey=ac81076e7bbd48f88fba77c2d523e8b2",
+  requestOptions
+)
+  .then((response) => response.json())
+  .then(function (response) {
+    var userLocation = response.city.name;
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${userLocation}&appid=4d25c521dda0430b5616db00d103b5a4`,
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then(function (response) {
+        var userWeather = response.weather[0].main;
+      });
+  })
+  .catch((error) => console.log("error", error));
