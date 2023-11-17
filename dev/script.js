@@ -127,6 +127,8 @@ $("#ingredientBtn").on("click", function () {
           `Nutrition label for ${result[currentRecipeIndex].title} recipe`
         );
 
+        $(".videos").html("")
+
         // Update youtube titles and videos when the find another recipe button is clicked
         fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=${result[currentRecipeIndex].title}-receipe&key=AIzaSyCPQrlqDUzWQXG8L_DzMhfZ64M-WBvCY2Q`)
         .then (function (result){
