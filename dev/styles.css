@@ -51,23 +51,6 @@ h2 {
     text-align: center;
   }
 
-/* .startPage,
-.ingredientPage,
-.recipePage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* position: absolute;
-    top: 30%;
-    left: 20%; */
-    /* transform: translate(-50%, -50%); */
-    /* background-color: white;
-    padding: 30px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.177);
-    text-align: center;
-} */ */
-
 .recipePage {
     width: 85%;
 
@@ -116,15 +99,6 @@ h2 {
 .ingredientField {
     padding: 5px;
     margin: 3px;
-}
-
-@media screen and (max-device-width: 768px),
-screen and (max-width: 414px) {
-    .startPage,
-    .ingredientPage,
-    .recipePage {
-        width: 80%;
-    }
 }
 
 .videos {
@@ -193,5 +167,14 @@ screen and (max-width: 414px) {
     100%{
         opacity: 1;
         transform: scale3d(1, 1, 1);
+    }
+}
+
+@media screen and (max-device-width: 768px),
+screen and (max-width: 414px) {
+    .startPage,
+    .ingredientPage,
+    .recipePage {
+        width: 80%;
     }
 }
