@@ -19,14 +19,20 @@ function show(element) {
   element.classList.remove("inactive");
 }
 
+function fadeIn(element) {
+  element.classList.add("fadeIn");
+}
+
 window.addEventListener("load", function () {
   hide(ingredientPage);
   hide(recipePage);
+  fadeIn(startPage);
 });
 
 startBtn.addEventListener("click", function () {
   hide(startPage);
   show(ingredientPage);
+  fadeIn(ingredientPage);
 });
 
 restartBtn.addEventListener("click", function () {
@@ -36,6 +42,7 @@ restartBtn.addEventListener("click", function () {
   hide(ingredientPage);
   hide(recipePage);
   show(startPage);
+  fadeIn(startPage);
   document.getElementById("startPageTitle").innerText =
     "Miss me already? Let's see what else is in your fridge!";
   document.getElementById("ingri1").value = "";
@@ -67,6 +74,7 @@ $("#ingredientBtn").on("click", function () {
       } else {
         hide(ingredientPage);
         show(recipePage);
+        fadeIn(recipePage);
         $("#recipeImage").attr("src", result[0].image);
         $("#recipeImage").attr("alt", `Recipe image for ${result[0].title}`);
         $("#recipeName").text(result[0].title);

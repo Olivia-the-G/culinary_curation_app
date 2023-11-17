@@ -18,12 +18,13 @@
         <h1>KUMAMO</h1>
     </header>
 
-    <section class="startPage">
-        <h2 id="startPageTitle">Don't know what to do with what's in your fridge? We can help!</h2>
+    <section class="container">
+        <section class="startPage">
+            <h2 id="startPageTitle">Don't know what to do with what's in your fridge? We can help!</h2>
 
-        <img src="./Assets/images/Image202311051609211.png" alt="BEAR">
-        <button class="button" id="startBtn">Let's get started</button>
-    </section>
+            <img src="./Assets/images/Image202311051609211.png" alt="BEAR">
+            <button class="button" id="startBtn">Let's get started</button>
+        </section>
     <!-- 
         <section class="typePage">
             <h2>What do you want to make?</h2>
@@ -36,16 +37,16 @@
             <button class="button" id="typeBtn">Next</button>
         </section> -->
 
-    <section class="ingredientPage">
-        <h2>What do you have in your fridge right now?</h2>
-        <section class="ingredientList">
-            <input class="ingredientField" id="ingri1" type="text">
-            <input class="ingredientField" id="ingri2" type="text">
-            <input class="ingredientField" id="ingri3" type="text">
+        <section class="ingredientPage">
+            <h2>What do you have in your fridge right now?</h2>
+            <section class="ingredientList">
+                <input class="ingredientField" id="ingri1" type="text">
+                <input class="ingredientField" id="ingri2" type="text">
+                <input class="ingredientField" id="ingri3" type="text">
+            </section>
+            <div id="errorHandler"></div>
+            <button class="button" id="ingredientBtn">Find Recipe!</button>
         </section>
-        <div id="errorHandler"></div>
-        <button class="button" id="ingredientBtn">Find Recipe!</button>
-    </section>
 
     <!-- <section class="dietPage">
             <h2>Any Dietary Restriction?</h2>
@@ -55,32 +56,32 @@
             <button class="button" id="dietBtn">Fine Recipe!</button>
         </section> -->
 
-    <section class="recipePage">
-        <h4>Try this Recipe!</h4>
-        <section class="foundRecipe">
+        <section class="recipePage">
+            <h4>Try this Recipe!</h4>
+            <section class="foundRecipe">
             <!-- possible bootstrap component -->
-            <h3 id="recipeName"></h3>
-            <Section class="recipeContainer">
-                <section class="recipeLink">
-                    <a id="recipeBtnLink" href="" target="_blank"><button class="button" id="recipeLinkBtn">Go to Recipe</button></a>
-                    <button class="button" id="regenerateBtn">Find Another Recipe</button>
-                    <button class="button" id="restartBtn">Start from Beginning</button>
-                </section>
-                <section class="recipeInfo">
-                    <section id="recipe-image-section">
-                        <img id="recipeImage" src="" alt="">
-                        <!-- javascript stuff here , fetch, generate element, append-->
+                <h3 id="recipeName"></h3>
+                <Section class="recipeContainer">
+                    <section class="recipeLink">
+                        <a id="recipeBtnLink" href="" target="_blank"><button class="button" id="recipeLinkBtn">Go to Recipe</button></a>
+                        <button class="button" id="regenerateBtn">Find Another Recipe</button>
+                        <button class="button" id="restartBtn">Start from Beginning</button>
                     </section>
-                    <section class="nutrition">
-                        <img id="nutritionLabel" src="" alt="">
+                    <section class="recipeInfo">
+                        <section id="recipe-image-section">
+                            <img id="recipeImage" src="" alt="">
+                            <!-- javascript stuff here , fetch, generate element, append-->
+                        </section>
+                        <section class="nutrition">
+                            <img id="nutritionLabel" src="" alt="">
+                        </section>
                     </section>
-                </section>
-            </Section>
-            <section class = "videoSection">Here's how some people on YouTube have made similar recipes!</section>
-            <div id="recipeErrorHandler"></div>
-            <div class="videos"></div>
-
+                </Section>
+                <section class = "videoSection">Here's how some people on YouTube have made similar recipes!</section>
+                <div id="recipeErrorHandler"></div>
+                <div class="videos"></div>
         </section>
+    </section>
 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
