@@ -94,7 +94,7 @@ $("#ingredientBtn").on("click", function () {
             console.log(data);
             var videoList = data.items;
             for (var i = 0; i < 4; i++) {
-              var embeddedVideo = `<iframe id="video-player" type="text/html" width="60" height="30" src="https://www.youtube.com/embed/${videoList[i].id.videoId}" frameborder="0"></iframe>`;
+              var embeddedVideo = `<iframe id="video-player" type="text/html" width="60" height="30" src="https://www.youtube.com/embed/${videoList[i].id.videoId}" frameborder="0" allow="fullscreen"></iframe>`;
               $(".videos").append(
                 `<div class="recipe-video">${videoList[i].snippet.title} ${embeddedVideo}</div>`
               );
@@ -137,7 +137,7 @@ $("#ingredientBtn").on("click", function () {
           console.log(data)
           var videoList = data.items;
           for(var i = 0; i < 4; i++){
-            var embeddedVideo = `<iframe id="video-player" type="text/html" width="60" height="30" src="https://www.youtube.com/embed/${videoList[i].id.videoId}" frameborder="0"></iframe>`
+            var embeddedVideo = `<iframe id="video-player" type="text/html" width="60" height="30" src="https://www.youtube.com/embed/${videoList[i].id.videoId}" frameborder="0" allow="fullscreen"></iframe>`
             $(".videos").append(`<div class="recipe-video">${videoList[i].snippet.title} ${embeddedVideo}</div>`)
 
             console.log(videoList[i].snippet.title, videoList[i].id.videoId)
