@@ -71,7 +71,7 @@ h2 {
     font-weight: 500;
     font-size: 16px;
     box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17), inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15), inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
-    width: 100%;
+    width: 200px;
 }
 
 .button:hover {
@@ -85,9 +85,6 @@ h2 {
     box-shadow: inset 0 0.6em 2em -0.3em rgba(0, 0, 0, 0.15), inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
 }
 
-.inactive {
-    display: none;
-}
 
 .ingredientList {
     display: flex;
@@ -141,6 +138,7 @@ screen and (max-width: 414px) {
 .recipeLink{
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 30%;
   
 }
@@ -156,4 +154,16 @@ screen and (max-width: 414px) {
     margin-top: 4%;
     margin-bottom: 4%;
     font-weight: 500;
+}
+
+.inactive {
+    display: none;
+}
+
+
+.fadeIn{
+    animation: fadeAndScale .3s ease-in
+}
+@keyframes fadeAndScale{
+
 }
