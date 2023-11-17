@@ -83,19 +83,24 @@ $("#ingredientBtn").on("click", function () {
           `https://spoonacular.com/${result[0].title}`
         );
         // Get Youtube video titles & video ids using YouTube api based on the recipe title returned by the Spoonacular api. Still require work to replace the video titles and ids when getting a different recipe.
-        //Getting cooking videos based on the recipe title returned by the Spoonacular api and embed/display on the page 
-        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=${result[0].title}-receipe&key=AIzaSyCPQrlqDUzWQXG8L_DzMhfZ64M-WBvCY2Q`)
-        .then (function (result){
-          return result.json()
-        }).then(function (data){
-          console.log(data)
-          var videoList = data.items;
-          for(var i = 0; i < 4; i++){
-            var embeddedVideo = `<iframe id="video-player" type="text/html" width="60" height="30" src="https://www.youtube.com/embed/${videoList[i].id.videoId}" frameborder="0"></iframe>`
-            $(".videos").append(`<div class="recipe-video">${videoList[i].snippet.title} ${embeddedVideo}</div>`)
+        //Getting cooking videos based on the recipe title returned by the Spoonacular api and embed/display on the page
+        fetch(
+          `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=${result[0].title}-receipe&key=AIzaSyCPQrlqDUzWQXG8L_DzMhfZ64M-WBvCY2Q`
+        )
+          .then(function (result) {
+            return result.json();
+          })
+          .then(function (data) {
+            console.log(data);
+            var videoList = data.items;
+            for (var i = 0; i < 4; i++) {
+              var embeddedVideo = `<iframe id="video-player" type="text/html" width="60" height="30" src="https://www.youtube.com/embed/${videoList[i].id.videoId}" frameborder="0"></iframe>`;
+              $(".videos").append(
+                `<div class="recipe-video">${videoList[i].snippet.title} ${embeddedVideo}</div>`
+              );
 
-            console.log(videoList[i].snippet.title, videoList[i].id.videoId)
-          };
+              console.log(videoList[i].snippet.title, videoList[i].id.videoId);
+            }
           });
         // console.log(result);
         displayNextRecipe();
@@ -150,20 +155,67 @@ var requestOptions = {
   method: "GET",
 };
 
-fetch(
-  "https://api.geoapify.com/v1/ipinfo?&apiKey=ac81076e7bbd48f88fba77c2d523e8b2",
-  requestOptions
-)
-  .then((response) => response.json())
-  .then(function (response) {
-    var userLocation = response.city.name;
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${userLocation}&appid=4d25c521dda0430b5616db00d103b5a4`,
-      requestOptions
-    )
-      .then((response) => response.json())
-      .then(function (response) {
-        var userWeather = response.weather[0].main;
-      });
-  })
-  .catch((error) => console.log("error", error));
+function matchWeather(userWeather) {
+  var bearSpeechBubble = $("#bearSpeechBubble");
+  switch (userWeather) {
+    case "Clouds":
+      bearSpeechBubble.text(
+        "Grey skies? Lets brighten up your day with something yummy."
+      );
+      break;
+    case "Rain":
+      bearSpeechBubble.text(
+        "Don't forget your umbrella today. Maybe some soup today?"
+      );
+      break;
+    case "Clear":
+      bearSpeechBubble.text(
+        "Your skies are so clear. Let's cook something pretty!"
+      );
+      break;
+    case "Snow":
+      bearSpeechBubble.text("Brr... It's cold! Warm up with something yummy!");
+      break;
+    default:
+      bearSpeechBubble.text("Welcome! Let's find a delicious recipe for you.");
+  }
+
+  // Animate the bearSpeechBubble text
+  i = 0;
+  speed = 50;
+  typeWriter(bearSpeechBubble.text());
+}
+
+function typeWriter(textContent) {
+  var bearSpeechBubble = $("#bearSpeechBubble");
+  if (i < textContent.length) {
+    bearSpeechBubble.text(textContent.substring(0, i) + textContent.charAt(i));
+    i++;
+    setTimeout(function () {
+      typeWriter(textContent);
+    }, speed);
+  }
+}
+
+function getUserCity() {
+  fetch(
+    "https://api.geoapify.com/v1/ipinfo?&apiKey=ac81076e7bbd48f88fba77c2d523e8b2",
+    requestOptions
+  )
+    .then((response) => response.json())
+    .then(function (response) {
+      var userLocation = response.city.name;
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${userLocation}&appid=4d25c521dda0430b5616db00d103b5a4`,
+        requestOptions
+      )
+        .then((response) => response.json())
+        .then(function (response) {
+          var userWeather = response.weather[0].main;
+          matchWeather(userWeather);
+        });
+    })
+    .catch((error) => console.log("error", error));
+}
+
+getUserCity();
