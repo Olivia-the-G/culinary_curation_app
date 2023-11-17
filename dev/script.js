@@ -121,6 +121,20 @@ $("#ingredientBtn").on("click", function () {
           "alt",
           `Nutrition label for ${result[currentRecipeIndex].title} recipe`
         );
+
+        // Update youtube titles and videos when the find another recipe button is clicked
+        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=${result[currentRecipeIndex].title}-receipe&key=AIzaSyCPQrlqDUzWQXG8L_DzMhfZ64M-WBvCY2Q`)
+        .then (function (result){
+          return result.json()
+        }).then(function (data){
+          console.log(data)
+          var videoList = data.items;
+          for(var i = 0; i < 4; i++){
+            var embeddedVideo = `<iframe id="video-player" type="text/html" width="60" height="30" src="https://www.youtube.com/embed/${videoList[i].id.videoId}" frameborder="0"></iframe>`
+            $(".videos").append(`<div class="recipe-video">${videoList[i].snippet.title} ${embeddedVideo}</div>`)
+
+            console.log(videoList[i].snippet.title, videoList[i].id.videoId)
+          }});
         // console.log(currentRecipeIndex);
         currentRecipeIndex++;
       } else {
