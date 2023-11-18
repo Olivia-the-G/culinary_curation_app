@@ -36,19 +36,7 @@ startBtn.addEventListener("click", function () {
 });
 
 restartBtn.addEventListener("click", function () {
-  // tried to reset the results array but it doesn't seem to work
-  result = [];
-  currentRecipeIndex = 0;
-  hide(ingredientPage);
-  hide(recipePage);
-  show(startPage);
-  fadeIn(startPage);
-  document.getElementById("startPageTitle").innerText =
-    "Miss me already? Let's see what else is in your fridge!";
-  document.getElementById("ingri1").value = "";
-  document.getElementById("ingri2").value = "";
-  document.getElementById("ingri3").value = "";
-  $("#errorHandler")[0].innerText = "";
+  window.location.assign("./index.html");
 });
 
 $("#ingredientBtn").on("click", function () {
