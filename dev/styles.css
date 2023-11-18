@@ -178,5 +178,26 @@ screen and (max-width: 414px) {
     .ingredientPage,
     .recipePage {
         width: 80%;
+       
     }
+    .videos{
+        display: block;
+        margin: auto;
+        width: 60%;
+        margin-left: 2.2rem;
+    }
+    .videoSection{
+        font-size: 12px;
+        margin: 1rem 2rem 0 2rem;
+    }
+    .recipeContainer{
+        display:flex;
+        flex-direction: column;
+    }
+    .recipeLink{
+        margin-left: 7rem;
+        margin-top: 10rem;
+    }
+    
+
 }
