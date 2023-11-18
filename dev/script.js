@@ -19,14 +19,20 @@ function show(element) {
   element.classList.remove("inactive");
 }
 
+function fadeIn(element) {
+  element.classList.add("fadeIn");
+}
+
 window.addEventListener("load", function () {
   hide(ingredientPage);
   hide(recipePage);
+  fadeIn(startPage);
 });
 
 startBtn.addEventListener("click", function () {
   hide(startPage);
   show(ingredientPage);
+  fadeIn(ingredientPage);
 });
 
 restartBtn.addEventListener("click", function () {
@@ -36,6 +42,7 @@ restartBtn.addEventListener("click", function () {
   hide(ingredientPage);
   hide(recipePage);
   show(startPage);
+  fadeIn(startPage);
   document.getElementById("startPageTitle").innerText =
     "Miss me already? Let's see what else is in your fridge!";
   document.getElementById("ingri1").value = "";
@@ -67,6 +74,7 @@ $("#ingredientBtn").on("click", function () {
       } else {
         hide(ingredientPage);
         show(recipePage);
+        fadeIn(recipePage);
         $("#recipeImage").attr("src", result[0].image);
         $("#recipeImage").attr("alt", `Recipe image for ${result[0].title}`);
         $("#recipeName").text(result[0].title);
@@ -84,7 +92,9 @@ $("#ingredientBtn").on("click", function () {
         );
         // Get Youtube video titles & video ids using YouTube api based on the recipe title returned by the Spoonacular api. Still require work to replace the video titles and ids when getting a different recipe.
         //Getting cooking videos based on the recipe title returned by the Spoonacular api and embed/display on the page
+
         youtubeCall()
+
         // console.log(result);
         displayNextRecipe();
       }
@@ -113,8 +123,9 @@ $("#ingredientBtn").on("click", function () {
         $(".videos").html("")
 
         // Update youtube titles and videos when the find another recipe button is clicked
+
         youtubeCall()
-        
+
         // console.log(currentRecipeIndex);
         currentRecipeIndex++;
       } else {
@@ -173,7 +184,7 @@ function matchWeather(userWeather) {
 
   // Animate the bearSpeechBubble text
   i = 0;
-  speed = 50;
+  speed = 30;
   typeWriter(bearSpeechBubble.text());
 }
 
@@ -210,3 +221,5 @@ function getUserCity() {
 }
 
 getUserCity();
+
+

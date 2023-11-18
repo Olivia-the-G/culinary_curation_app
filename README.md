@@ -23,7 +23,8 @@ Have you ever found yourself staring at chaos in your fridge unable to think of 
 
 ## Usage
 
-This section is still to be written 
+![_C__Users_olivi_bootcamp_culinary_curation_app_index html (1)](https://github.com/Nicole-Hong/culinary_curation_app/assets/130778807/750f65bb-861e-446a-84e3-468ac150b11c)
+
 
 ## Credits
 
@@ -38,12 +39,16 @@ This section is still to be written
 
 ### API Links
 
-- Recipe API: https://developer.edamam.com/edamam-docs-recipe-api
-- Nutrition API: https://developer.edamam.com/edamam-docs-nutrition-api 
+- Spoonacular: https://spoonacular.com/food-api
+- YouTube API: https://developers.google.com/youtube/v3
+- Location API: https://www.geoapify.com/
+- Weather API: https://openweathermap.org/api 
 
 ## Features
 
-This section is still to be written
+- Upon opening the page you will be greeted by the Kumamo Bear and prompted to enter 1-3 ingredients in the input fields. You will then receive a recipe that uses those ingredients
+- You can also click on the "Find Another Recipe" button to get up to ten more recipes using the same ingredients
+- See nutritional information on all of the recipes as well as linked YouTube videos on how to cook similar recipes
 
 ## License
 

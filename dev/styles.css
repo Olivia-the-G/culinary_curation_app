@@ -5,11 +5,8 @@
 header {
     width: 100%;
     text-align: center;
-    padding: 30px;
-    display: flex;
-    letter-spacing: 30px;
+    padding: 20px;
     box-shadow: 0px 0px 20px 20px #00000044;
-    justify-content: center;
 }
 
 body {
@@ -17,13 +14,18 @@ body {
 }
 
 img {
-    max-width: 100px;
-    max-height: 100px;
+    width: 100px;
+    height: 100px;
     margin: 10px;
 }
 
-h1 {
+/* h1 {
     color: #78502b;
+} */
+
+.appLogo{
+    height: 100px;
+    width: 300px;
 }
 
 h2 {
@@ -31,22 +33,25 @@ h2 {
     padding-bottom: 10px;
 }
 
-.startPage,
-.ingredientPage,
-.recipePage {
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65vh; /* Adjust the height as needed */
+  }
+  
+  .startPage,
+  .ingredientPage,
+  .recipePage {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     background-color: white;
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.177);
     text-align: center;
-}
+  }
 
 .recipePage {
     width: 85%;
@@ -96,15 +101,6 @@ h2 {
 .ingredientField {
     padding: 5px;
     margin: 3px;
-}
-
-@media screen and (max-device-width: 768px),
-screen and (max-width: 414px) {
-    .startPage,
-    .ingredientPage,
-    .recipePage {
-        width: 80%;
-    }
 }
 
 .videos {
@@ -162,8 +158,25 @@ screen and (max-width: 414px) {
 
 
 .fadeIn{
-    animation: fadeAndScale .3s ease-in
+    animation: fadeAndScale .5s cubic-bezier(0,.38,.88,1.3);
+    transform-origin: bottom center;
 }
 @keyframes fadeAndScale{
+    0% {
+        opacity: 0;
+        transform: scale3d(.50, .50, 1);
+    }
+    100%{
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
 
+@media screen and (max-device-width: 768px),
+screen and (max-width: 414px) {
+    .startPage,
+    .ingredientPage,
+    .recipePage {
+        width: 80%;
+    }
 }
