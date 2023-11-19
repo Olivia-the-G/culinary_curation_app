@@ -1,12 +1,33 @@
 * {
     font-size: 18px;
+    color: rgb(114, 49, 18);
+    font-family: cursive;
+}
+
+.appLogo{
+    height: 80px;
+    width: 300px;
 }
 
 header {
     width: 100%;
     text-align: center;
     padding: 20px;
-    box-shadow: 0px 0px 20px 20px #00000044;
+    box-shadow: 0px 0px 10px 15px #00000025;
+}
+
+#startPageTitle{
+    font-family: cursive;
+}
+
+#bearImg {
+    width: 20%;
+    height:20%;
+}
+
+
+#startBtn{
+    margin-top: 2%;
 }
 
 body {
@@ -17,15 +38,6 @@ img {
     width: 100px;
     height: 100px;
     margin: 10px;
-}
-
-/* h1 {
-    color: #78502b;
-} */
-
-.appLogo{
-    height: 100px;
-    width: 300px;
 }
 
 h2 {
@@ -48,6 +60,7 @@ h2 {
     align-items: center;
     background-color: white;
     padding: 30px;
+    margin: 3% 0 3% 0;
     border-radius: 5px;
     box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.177);
     text-align: center;
@@ -56,6 +69,11 @@ h2 {
 .recipePage {
     width: 85%;
 
+}
+
+h3{
+    color: rgb(91, 36, 10);
+    margin-bottom: 2%;
 }
 
 #errorHandler {
@@ -147,9 +165,9 @@ h2 {
 }
 
 .videoSection{
-    margin-top: 4%;
-    margin-bottom: 4%;
+    margin-top: 3%;
     font-weight: 500;
+    font-size: 1.5rem;
 }
 
 .inactive {
