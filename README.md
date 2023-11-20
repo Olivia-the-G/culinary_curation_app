@@ -29,7 +29,10 @@ Our website uses API functionality to provide you, the user, with **recipes, pho
 
 ## 💻 Usage
 
-![_C__Users_olivi_bootcamp_culinary_curation_app_index html (2)](https://github.com/Nicole-Hong/culinary_curation_app/assets/130778807/394730f4-c5ae-4879-a37c-095c9a2e992e)
+### Website Demo! --->
+![Kumamo-demo](https://github.com/Nicole-Hong/culinary_curation_app/assets/130778807/3a056dc1-c803-4408-81db-87aa13e3022a)
+
+### Visit launched site here ---> 
 
 ## 🧑‍💻 Credits
 
@@ -61,7 +64,7 @@ See **nutritional information** on all of the dishes as well as **linked YouTube
 
 ## 🏛️ License
 
-
 This application uses an MIT License - See [here.](./LICENSE)
+
 
 ---
