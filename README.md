@@ -4,14 +4,14 @@
 
 ## 🐻 Table of Contents
 
-- [Description](#description)
-- [Timeline](#timeline)
-- [Usage](#usage)
-- [Credits](#credits)
-- [Features](#features)
-- [License](#license)
+- [Description](#✍️-description)
+- [Timeline](#📆-timeline)
+- [Usage](#💻-usage)
+- [Credits](#🧑‍💻-credits)
+- [Features](#💡-features)
+- [License](#🏛️-license)
 
-## 📋 Description
+## ✍️ Description
 
 Have you ever found yourself staring at the chaos in your fridge, unable to think of a way to utilize what's in it? We've all been there, and now we have created a solution to that common problem! 🐻 Kumamo is an easy to use **application that will choose your meal for you!** 
 
@@ -27,7 +27,7 @@ Our website uses API functionality to provide you, the user, with **recipes, pho
 - November 19 Sun: Mock Presentation
 - November 20 Mon: Project Due
 
-## 🖱️ Usage
+## 💻 Usage
 
 ![_C__Users_olivi_bootcamp_culinary_curation_app_index html (2)](https://github.com/Nicole-Hong/culinary_curation_app/assets/130778807/394730f4-c5ae-4879-a37c-095c9a2e992e)
 
@@ -49,7 +49,7 @@ Our website uses API functionality to provide you, the user, with **recipes, pho
 - [Geoapify](https://www.geoapify.com/) ~ Used in our site to locate the user and work hand in hand with the weather API.
 - [OpenWeatherMap](https://openweathermap.org/api) ~ Provides us with weather conditions in any area and, working with the Geoapify API, allows us to give the user their specialized greeting message.
 
-## 💡Features
+## 💡 Features
 
 - Upon opening the page you will be greeted by our Kumamo Bear! 🐻
 - The Bear uses the APIs to give you a specialized message based on the current weather in your area.
