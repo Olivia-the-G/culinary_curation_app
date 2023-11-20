@@ -74,14 +74,18 @@ $("#ingredientBtn").on("click", function () {
           "alt",
           `Nutrition label for ${result[0].title} recipe`
         );
-        $("#recipeBtnLink").attr(
-          "href",
-          `https://spoonacular.com/${result[0].title}`
-        );
+        $.ajax({
+          url: `https://api.spoonacular.com/recipes/${result[0].id}/information?includeNutrition=false&apiKey=d4fc8b0b2ddf4d65864d92dabf969944`,
+          dataType: "json",
+          success: function (response) {
+            result = response;
+            $("#recipeBtnLink").attr("href", result.sourceUrl);
+          },
+        });
         // Get Youtube video titles & video ids using YouTube api based on the recipe title returned by the Spoonacular api. Still require work to replace the video titles and ids when getting a different recipe.
         //Getting cooking videos based on the recipe title returned by the Spoonacular api and embed/display on the page
 
-        youtubeCall()
+        youtubeCall();
 
         // console.log(result);
         displayNextRecipe();
@@ -107,13 +111,13 @@ $("#ingredientBtn").on("click", function () {
           "alt",
           `Nutrition label for ${result[currentRecipeIndex].title} recipe`
         );
-
-        $(".videos").html("")
-
+        $("#recipeBtnLink").attr(
+          "href",
+          `https://spoonacular.com/${result[currentRecipeIndex].title}`
+        );
+        $(".videos").html("");
         // Update youtube titles and videos when the find another recipe button is clicked
-
-        youtubeCall()
-
+        youtubeCall();
         // console.log(currentRecipeIndex);
         currentRecipeIndex++;
       } else {
@@ -126,20 +130,26 @@ $("#ingredientBtn").on("click", function () {
 });
 
 // Function that calls youtube api and adds the fetched content to the videos section
-var youtubeCall = function(){
-  fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=${result[currentRecipeIndex].title}-receipe&key=AIzaSyCPQrlqDUzWQXG8L_DzMhfZ64M-WBvCY2Q`)
-  .then (function (result){
-    return result.json()
-  }).then(function (data){
-    console.log(data)
-    var videoList = data.items;
-    for(var i = 0; i < 4; i++){
-      var embeddedVideo = `<iframe id="video-player" type="text/html" width="60" height="30" src="https://www.youtube.com/embed/${videoList[i].id.videoId}" frameborder="0" allow="fullscreen"></iframe>`
-      $(".videos").append(`<div class="recipe-video">${videoList[i].snippet.title} ${embeddedVideo}</div>`)
+var youtubeCall = function () {
+  fetch(
+    `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=${result[currentRecipeIndex].title}-receipe&key=AIzaSyCPQrlqDUzWQXG8L_DzMhfZ64M-WBvCY2Q`
+  )
+    .then(function (result) {
+      return result.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      var videoList = data.items;
+      for (var i = 0; i < 4; i++) {
+        var embeddedVideo = `<iframe id="video-player" type="text/html" width="60" height="30" src="https://www.youtube.com/embed/${videoList[i].id.videoId}" frameborder="0" allow="fullscreen"></iframe>`;
+        $(".videos").append(
+          `<div class="recipe-video">${videoList[i].snippet.title} ${embeddedVideo}</div>`
+        );
 
-      console.log(videoList[i].snippet.title, videoList[i].id.videoId)
-    }});
-}
+        console.log(videoList[i].snippet.title, videoList[i].id.videoId);
+      }
+    });
+};
 
 var requestOptions = {
   method: "GET",
@@ -209,5 +219,3 @@ function getUserCity() {
 }
 
 getUserCity();
-
-
