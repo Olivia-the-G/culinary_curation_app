@@ -1,6 +1,6 @@
 # KUMAMO - Culinary Curation App
 
-![_C__Users_olivi_bootcamp_culinary_curation_app_index html (3)](https://github.com/Nicole-Hong/culinary_curation_app/assets/130778807/773ddc51-ce66-4470-9f3e-cf34b1faab38)
+![Kumamo-readme-header](https://github.com/Nicole-Hong/culinary_curation_app/assets/130778807/f0ae31c8-cffd-4ef2-97a7-2676e1688b65)
 
 ## 🐻 Table of Contents
 
@@ -29,10 +29,10 @@ Our website uses API functionality to provide you, the user, with **recipes, pho
 
 ## 💻 Usage
 
-### Website Demo! --->
-![Kumamo-demo](https://github.com/Nicole-Hong/culinary_curation_app/assets/130778807/3a056dc1-c803-4408-81db-87aa13e3022a)
+### Website Demo
+![Kumamo-demo](https://github.com/Nicole-Hong/culinary_curation_app/assets/130778807/8eac9ac2-1876-4d98-8fa7-d6d98ecd377e)
 
-### Visit launched site here ---> 
+### Visit Website
 
 ## 🧑‍💻 Credits
 
