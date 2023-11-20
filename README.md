@@ -4,14 +4,14 @@
 
 ## 🐻 Table of Contents
 
-- [Description](#description)
-- [Timeline](#timeline)
-- [Usage](#usage)
-- [Credits](#credits)
-- [Features](#features)
-- [License](#license)
+- [Description](#-description)
+- [Timeline](#-timeline)
+- [Usage](#-usage)
+- [Credits](#-credits)
+- [Features](#-features)
+- [License](#-license)
 
-## ✍️ Description {#description}
+## ✍️ Description
 
 Have you ever found yourself staring at the chaos in your fridge, unable to think of a way to utilize what's in it? We've all been there, and now we have created a solution to that common problem! 🐻 Kumamo is an easy to use **application that will choose your meal for you!** 
 
@@ -19,7 +19,7 @@ Using our website, you can **enter ingredients found in your fridge**, and the p
 
 Our website uses API functionality to provide you, the user, with **recipes, photos, links, and even nutritional facts** so that you can find exaclty what you're looking for. You will also be provided with various options to choose from, in case the first dish doesn't match with your personal taste. 
 
-## 📆 Timeline {#timeline}
+## 📆 Timeline
 
 - [x] November 8 Wed: Official Project Kick-Off
 - [x] November 15 Wed: MVP
@@ -27,11 +27,11 @@ Our website uses API functionality to provide you, the user, with **recipes, pho
 - [x] November 19 Sun: Mock Presentation
 - [x] November 20 Mon: Project Due
 
-## 💻 Usage {#usage}
+## 💻 Usage
 
 ![_C__Users_olivi_bootcamp_culinary_curation_app_index html (2)](https://github.com/Nicole-Hong/culinary_curation_app/assets/130778807/394730f4-c5ae-4879-a37c-095c9a2e992e)
 
-## 🧑‍💻 Credits {#credits}
+## 🧑‍💻 Credits
 
 ### Colla'bear'ators
 
@@ -49,7 +49,7 @@ Our website uses API functionality to provide you, the user, with **recipes, pho
 - [Geoapify](https://www.geoapify.com/) ~ Used in our site to locate the user and work hand in hand with the weather API.
 - [OpenWeatherMap](https://openweathermap.org/api) ~ Provides us with weather conditions in any area and, working with the Geoapify API, allows us to give the user their specialized greeting message.
 
-## 💡 Features {#features}
+## 💡 Features
 
 Upon opening the page you will be greeted by our **Kumamo Bear!** 🐻 The Bear uses the APIs to give you a **specialized message** based on the **current weather in your area.**
 
@@ -59,6 +59,9 @@ Click on the "Find Another Recipe" button to get up to **ten more recipes** usin
 
 See **nutritional information** on all of the dishes as well as **linked YouTube videos** on how to cook similar recipes on the final page. If you want to try finding **recipes using different ingredients**, then just click 'Start from Beginning' and you'll be taken back to the first page. 
 
-## 🏛️ License {#license}
+## 🏛️ License
 
-This aplication uses an MIT License - See [here.](./LICENSE)
+
+This application uses an MIT License - See [here.](./LICENSE)
+
+---
