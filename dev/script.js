@@ -47,7 +47,6 @@ $("#ingredientBtn").on("click", function () {
   let ingredientItem2LC = ingredientItem2.toLowerCase();
   let ingredientItem3LC = ingredientItem3.toLowerCase();
   var recipeApi = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientItem1LC},${ingredientItem2LC},${ingredientItem3LC}&apiKey=7a5414c1ec984a2bb38149115cb49f5f`;
-  // tried to reset the results array but it doesn't seem to work
   result = [];
   $.ajax({
     url: recipeApi,
@@ -74,57 +73,75 @@ $("#ingredientBtn").on("click", function () {
           "alt",
           `Nutrition label for ${result[0].title} recipe`
         );
-        $.ajax({
-          url: `https://api.spoonacular.com/recipes/${result[0].id}/information?includeNutrition=false&apiKey=d4fc8b0b2ddf4d65864d92dabf969944`,
-          dataType: "json",
-          success: function (response) {
-            result = response;
-            $("#recipeBtnLink").attr("href", result.sourceUrl);
-          },
-        });
-        // Get Youtube video titles & video ids using YouTube api based on the recipe title returned by the Spoonacular api. Still require work to replace the video titles and ids when getting a different recipe.
-        //Getting cooking videos based on the recipe title returned by the Spoonacular api and embed/display on the page
-
+        function getRecipeUrl() {
+          $.ajax({
+            url: `https://api.spoonacular.com/recipes/${result[0].id}/information?includeNutrition=false&apiKey=d4fc8b0b2ddf4d65864d92dabf969944`,
+            dataType: "json",
+            success: function (response) {
+              result = response;
+              $("#recipeBtnLink").attr("href", result.sourceUrl);
+            },
+          });
+        }
+        // Get Youtube video titles & video ids using YouTube api based on the recipe title returned by the Spoonacular api.
+        getRecipeUrl();
         youtubeCall();
 
-        // console.log(result);
-        displayNextRecipe();
+        displayNextRecipe(
+          ingredientItem1LC,
+          ingredientItem2LC,
+          ingredientItem3LC
+        );
       }
     },
   });
 
-  // currently only works for the first set of ingredients, does not work for if i restart the whole process
-  function displayNextRecipe() {
+  function displayNextRecipe(
+    ingredientItem1LC,
+    ingredientItem2LC,
+    ingredientItem3LC
+  ) {
     $("#regenerateBtn").on("click", function () {
-      if (currentRecipeIndex < result.length) {
-        $("#recipeImage").attr("src", result[currentRecipeIndex].image);
-        $("#recipeImage").attr(
-          "alt",
-          `Recipe image for ${result[currentRecipeIndex].title}`
-        );
-        $("#recipeName").text(result[currentRecipeIndex].title);
-        $("#nutritionLabel").attr(
-          "src",
-          `https://api.spoonacular.com/recipes/${result[currentRecipeIndex].id}/nutritionLabel.png?apiKey=d4fc8b0b2ddf4d65864d92dabf969944`
-        );
-        $("#nutritionLabel").attr(
-          "alt",
-          `Nutrition label for ${result[currentRecipeIndex].title} recipe`
-        );
-        $("#recipeBtnLink").attr(
-          "href",
-          `https://spoonacular.com/${result[currentRecipeIndex].title}`
-        );
-        $(".videos").html("");
-        // Update youtube titles and videos when the find another recipe button is clicked
-        youtubeCall();
-        // console.log(currentRecipeIndex);
-        currentRecipeIndex++;
-      } else {
-        // console.log($("#recipeErrorHandler"));
-        $("#recipeErrorHandler")[0].innerText = "No more recipes available.";
-        currentRecipeIndex = 0;
-      }
+      currentRecipeIndex++;
+      $.ajax({
+        url: `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientItem1LC},${ingredientItem2LC},${ingredientItem3LC}&apiKey=7a5414c1ec984a2bb38149115cb49f5f`,
+        dataType: "json",
+        success: function (response) {
+          result = response;
+          if (currentRecipeIndex < result.length) {
+            console.log(result[currentRecipeIndex]);
+            $("#recipeImage").attr("src", result[currentRecipeIndex].image);
+            $("#recipeImage").attr(
+              "alt",
+              `Recipe image for ${result[currentRecipeIndex].title}`
+            );
+            $("#recipeName").text(result[currentRecipeIndex].title);
+            $("#nutritionLabel").attr(
+              "src",
+              `https://api.spoonacular.com/recipes/${result[currentRecipeIndex].id}/nutritionLabel.png?apiKey=d4fc8b0b2ddf4d65864d92dabf969944`
+            );
+            $("#nutritionLabel").attr(
+              "alt",
+              `Nutrition label for ${result[currentRecipeIndex].title} recipe`
+            );
+            $.ajax({
+              url: `https://api.spoonacular.com/recipes/${result[currentRecipeIndex].id}/information?includeNutrition=false&apiKey=d4fc8b0b2ddf4d65864d92dabf969944`,
+              dataType: "json",
+              success: function (response) {
+                result = response;
+                $("#recipeBtnLink").attr("href", result.sourceUrl);
+              },
+            });
+            $(".videos").html("");
+            // Update youtube titles and videos when the find another recipe button is clicked
+            youtubeCall();
+            console.log(currentRecipeIndex);
+          } else {
+            $("#recipeErrorHandler")[0].innerText =
+              "No more recipes available.";
+          }
+        },
+      });
     });
   }
 });
@@ -132,21 +149,18 @@ $("#ingredientBtn").on("click", function () {
 // Function that calls youtube api and adds the fetched content to the videos section
 var youtubeCall = function () {
   fetch(
-    `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=${result[currentRecipeIndex].title}-receipe&key=AIzaSyCPQrlqDUzWQXG8L_DzMhfZ64M-WBvCY2Q`
+    `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=${result[currentRecipeIndex].title}-receipe&key=AIzaSyDIxMa6ugmv0MhIeChjhS0vRITCJvRWZJM`
   )
     .then(function (result) {
       return result.json();
     })
     .then(function (data) {
-      console.log(data);
       var videoList = data.items;
       for (var i = 0; i < 4; i++) {
         var embeddedVideo = `<iframe id="video-player" type="text/html" width="60" height="30" src="https://www.youtube.com/embed/${videoList[i].id.videoId}" frameborder="0" allow="fullscreen"></iframe>`;
         $(".videos").append(
           `<div class="recipe-video">${videoList[i].snippet.title} ${embeddedVideo}</div>`
         );
-
-        console.log(videoList[i].snippet.title, videoList[i].id.videoId);
       }
     });
 };
